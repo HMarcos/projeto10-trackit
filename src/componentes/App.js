@@ -9,7 +9,8 @@ import UserContext from "../contextos/UserContext";
 import TelaLogin from "./TelaLogin";
 import TelaCadastro from "./TelaCadastro";
 import TelaHoje from "./TelaHoje";
-
+import TelaHabitos from "./TelaHabitos";
+import TelaHistorico from "./TelaHistorico";
 
 
 function App() {
@@ -26,6 +27,8 @@ function App() {
                         <Route path="/" element={<TelaLogin />}></Route>
                         <Route path="/cadastro" element={<TelaCadastro />}></Route>
                         <Route path="/hoje" element={<TelaHoje />}></Route>
+                        <Route path="/habitos" element={<TelaHabitos />}></Route>
+                        <Route path="/historico" element={<TelaHistorico />}></Route>
                     </Routes>
                 </BrowserRouter>
             </UserContext.Provider>

@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
     *{
         box-sizing: border-box;
+        text-decoration: none;
     }
     
     body {
@@ -12,6 +13,9 @@ const GlobalStyle = createGlobalStyle`
 
         --cor-bg-header: #126BA5;
         --cor-titulo-trackit: #FFFFFF;
+
+        --cor-bg-menu: #FFFFFF;
+        --cor-opcoes-menu: #52B6FF;
         
         --cor-bg-input: #FFFFFF;
         --cor-bg-input-disabled: #F2F2F2;
@@ -32,6 +36,10 @@ const GlobalStyle = createGlobalStyle`
 
     button{
         border: none;
+        cursor: pointer;
+    }
+
+    a {
         cursor: pointer;
     }
 `;

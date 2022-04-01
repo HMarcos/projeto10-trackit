@@ -3,20 +3,20 @@ import styled from "styled-components";
 import Header from "./Header";
 import Menu from "./Menu";
 
-function TelaHoje() {
+function TelaHabitos() {
 
     return (
         <>
             <Header />
             <Conteudo>
-                <h1>Hoje!</h1>
+                <h1>Hábito!</h1>
             </Conteudo>
             <Menu />
         </>
     );
 }
 
-export default TelaHoje;
+export default TelaHabitos;
 
 const Conteudo = styled.main`
     height: calc(100vh - 70px - 70px);
