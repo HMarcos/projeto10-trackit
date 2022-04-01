@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 import { ThreeDots } from "react-loader-spinner";
+
+import UserContext from "../contextos/UserContext";
 
 import LogoTrackIt from "./../assets/imagens/TrackIt.png"
 
@@ -20,6 +22,8 @@ function TelaLogin() {
 
     const [loading, setLoading] = useState(false);
 
+    const { setUsuario } = useContext(UserContext);
+
     const navigate = useNavigate();
 
     function logar(event) {
@@ -34,7 +38,9 @@ function TelaLogin() {
             const { data } = response;
             console.log("Sucesso ao logar");
             console.log(data);
-            //navigate("/cadastro");
+
+            setUsuario(data);
+            navigate("/hoje");
 
         });
 
