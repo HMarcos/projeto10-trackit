@@ -32,6 +32,11 @@ const TrackItHeader = styled.header`
     align-items: center;
     justify-content: space-between;
 
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
     h1 {
         font-family: 'Playball', cursive;
         
