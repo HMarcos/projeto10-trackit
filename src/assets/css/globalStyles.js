@@ -9,6 +9,9 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Lexend Deca', sans-serif;
         --cor-bg-telas-login-e-cadastro: #FFFFFF;
         --cor-bg-telas-iteracao: #E5E5E5;
+
+        --cor-bg-header: #126BA5;
+        --cor-titulo-trackit: #FFFFFF;
         
         --cor-bg-input: #FFFFFF;
         --cor-bg-input-disabled: #F2F2F2;

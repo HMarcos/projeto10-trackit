@@ -1,16 +1,15 @@
+import Header from "./Header";
 
-import { useContext } from "react";
+function TelaHoje() {
 
-import UserContext from "../contextos/UserContext";
-
-function TelaHoje(){
-    
-    const {usuario} = useContext(UserContext);
-
-    console.log(usuario);
-    
     return (
-        <h1>Hoje!</h1>
+        <>
+            <Header />
+            <main>
+                <h1>Hoje!</h1>
+            </main>
+
+        </>
     );
 }
 

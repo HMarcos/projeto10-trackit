@@ -19,9 +19,7 @@ function TelaLogin() {
             password: ""
         }
     )
-
     const [loading, setLoading] = useState(false);
-
     const { setUsuario } = useContext(UserContext);
 
     const navigate = useNavigate();
@@ -36,9 +34,7 @@ function TelaLogin() {
 
         promessa.then((response) => {
             const { data } = response;
-            console.log("Sucesso ao logar");
-            console.log(data);
-
+            
             setUsuario(data);
             navigate("/hoje");
 
