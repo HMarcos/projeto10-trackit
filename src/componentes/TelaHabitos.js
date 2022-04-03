@@ -13,7 +13,9 @@ import Habito from "./Habito";
 const LINK_API_HABITOS = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
 
 
-function TelaHabitos() {
+function TelaHabitos(props) {
+
+    props.definirBackground();
 
     const { novoHabito, setNovoHabito } = useContext(HabitContext);
     const { usuario } = useContext(UserContext);
@@ -79,7 +81,7 @@ function TelaHabitos() {
 
     const conteudoHabitos = atribuitConteudoHabitos();
 
-    const formNovoHabito = novoHabito.visivel ? <NovoHabito /> : <></>
+    const formNovoHabito = novoHabito.visivel ? <NovoHabito atualizarPagina={atualizarPagina} /> : <></>
 
 
     return (
@@ -105,11 +107,8 @@ function TelaHabitos() {
 export default TelaHabitos;
 
 const Conteudo = styled.main`
-    height: calc(100vh - 70px - 70px);
     margin-top: 70px;
-    margin-bottom: 70px;
-
-    background-color: var(--cor-bg-telas-iteracao);
+    margin-bottom: 120px;
 `;
 
 const Container = styled.div`
@@ -151,6 +150,7 @@ const MeusHabitos = styled.section`
 
 const Habitos = styled.section`
     margin-top: 30px;
+
 `;
 
 const NenhumHabito = styled.p`

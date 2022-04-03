@@ -11,7 +11,9 @@ import LogoTrackIt from "./../assets/imagens/TrackIt.png"
 
 const LINK_API_LOGIN = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login";
 
-function TelaLogin() {
+function TelaLogin(props) {
+
+    props.definirBackground();
 
     const [login, setLogin] = useState(
         {
@@ -92,10 +94,7 @@ function TelaLogin() {
 export default TelaLogin;
 
 const Conteudo = styled.main`
-    background-color: var(--cor-bg-telas-login-e-cadastro);
-
     height: 100vh;
-
     display: flex;
     flex-direction: column;
     justify-content: center;

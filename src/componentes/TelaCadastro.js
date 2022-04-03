@@ -9,7 +9,9 @@ import LogoTrackIt from "./../assets/imagens/TrackIt.png"
 
 const LINK_API_CADASTRO = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up";
 
-function TelaCadastro() {
+function TelaCadastro(props) {
+
+    props.definirBackground();
 
     const [cadastro, setCadastro] = useState(
         {
@@ -106,8 +108,6 @@ function TelaCadastro() {
 export default TelaCadastro;
 
 const Conteudo = styled.main`
-    background-color: var(--cor-bg-telas-login-e-cadastro);
-
     height: 100vh;
 
     display: flex;

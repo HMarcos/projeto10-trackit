@@ -8,6 +8,8 @@ const GlobalStyle = createGlobalStyle`
     
     body {
         font-family: 'Lexend Deca', sans-serif;
+        background-color: ${(props) => props.background};
+        
         --cor-bg-telas-login-e-cadastro: #FFFFFF;
         --cor-bg-telas-iteracao: #E5E5E5;
 

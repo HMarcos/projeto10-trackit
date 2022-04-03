@@ -25,19 +25,21 @@ function App() {
         }
     });
 
+    const [background, setBackground] = useState("#FFFFFF");
+
     return (
         <>
             <Reset />
-            <GlobalStyle />
+            <GlobalStyle background={background} />
             <UserContext.Provider value={{ usuario, setUsuario }}>
                 <HabitContext.Provider value={{ novoHabito, setNovoHabito }}>
                     <BrowserRouter>
                         <Routes>
-                            <Route path="/" element={<TelaLogin />}></Route>
-                            <Route path="/cadastro" element={<TelaCadastro />}></Route>
-                            <Route path="/hoje" element={<TelaHoje />}></Route>
-                            <Route path="/habitos" element={<TelaHabitos />}></Route>
-                            <Route path="/historico" element={<TelaHistorico />}></Route>
+                            <Route path="/" element={<TelaLogin definirBackground={() => setBackground("#FFFFFF")} />}></Route>
+                            <Route path="/cadastro" element={<TelaCadastro definirBackground={() => setBackground("#FFFFFF")} />}></Route>
+                            <Route path="/hoje" element={<TelaHoje definirBackground={() => setBackground("#E5E5E5")} />}></Route>
+                            <Route path="/habitos" element={<TelaHabitos definirBackground={() => setBackground("#E5E5E5")} />}></Route>
+                            <Route path="/historico" element={<TelaHistorico definirBackground={() => setBackground("#E5E5E5")} />}></Route>
                         </Routes>
                     </BrowserRouter>
                 </HabitContext.Provider>

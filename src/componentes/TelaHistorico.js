@@ -3,7 +3,9 @@ import styled from "styled-components";
 import Header from "./Header";
 import Menu from "./Menu";
 
-function TelaHistorico() {
+function TelaHistorico(props) {
+    
+    props.definirBackground();
 
     return (
         <>
@@ -19,9 +21,6 @@ function TelaHistorico() {
 export default TelaHistorico;
 
 const Conteudo = styled.main`
-    height: calc(100vh - 70px - 70px);
     margin-top: 70px;
-    margin-bottom: 70px;
-
-    background-color: var(--cor-bg-telas-iteracao);
+    margin-bottom: 120px;
 `;

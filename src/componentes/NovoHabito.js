@@ -10,7 +10,7 @@ import BotaoDiaDaSemana from "./BotaoDiaDaSemana";
 
 const LINK_API_HABITOS = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
 
-function NovoHabito() {
+function NovoHabito({atualizarPagina}) {
     const { novoHabito, setNovoHabito } = useContext(HabitContext);
     const { usuario } = useContext(UserContext);
 
@@ -52,7 +52,7 @@ function NovoHabito() {
                     }
                 })
 
-                // RECARREGAR A LISTA DE HÁBITOS
+                atualizarPagina();
             })
 
             promessa.catch((err) => {
