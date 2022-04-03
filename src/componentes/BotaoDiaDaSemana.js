@@ -13,11 +13,11 @@ function BotaoDiaDaSemana(props) {
 
     const selecionado = novoHabito.dados.days.includes(id);
 
-    function selecionarDia(){
+    function selecionarDia() {
         const dias = [...novoHabito.dados.days];
         let novosDias = [];
-        
-        if(selecionado){
+
+        if (selecionado) {
             novosDias = dias.filter((dia) => dia !== id);
         }
         else {
@@ -25,8 +25,9 @@ function BotaoDiaDaSemana(props) {
         }
 
         novosDias.sort((a, b) => a - b);
-        setNovoHabito({...novoHabito, dados:{...novoHabito.dados, days:novosDias}})
+        setNovoHabito({ ...novoHabito, dados: { ...novoHabito.dados, days: novosDias } })
     }
+
 
     return (
         <Botao

@@ -19,6 +19,8 @@ const GlobalStyle = createGlobalStyle`
         --cor-opcoes-menu: #52B6FF;
         
         --cor-bg-form-novo-habito: #FFFFFF;
+        --cor-bg-habito: #FFFFFF;
+        --cor-habito: #666666;
 
         --cor-bg-input: #FFFFFF;
         --cor-bg-input-disabled: #F2F2F2;

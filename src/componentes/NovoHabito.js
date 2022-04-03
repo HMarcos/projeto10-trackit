@@ -18,19 +18,6 @@ function NovoHabito() {
 
     const [loading, setLoading] = useState(false);
 
-    const diasDaSemana = ["D", "S", "T", "Q", "Q", "S", "S"];
-
-    const botoesDiaDaSemana = diasDaSemana.map((diaDaSemana, index) =>
-        <BotaoDiaDaSemana
-            key={index}
-            id={index}
-            sigla={diaDaSemana}
-            disabled={loading}
-        />
-    )
-
-    const botaoSalvar = loading ? <ThreeDots color="white" height={11} width={43} /> : "Salvar";
-
     function esconderNovoHabito() {
         setNovoHabito({ ...novoHabito, visivel: false });
     }
@@ -81,6 +68,19 @@ function NovoHabito() {
 
         }
     }
+
+    const diasDaSemana = ["D", "S", "T", "Q", "Q", "S", "S"];
+
+    const botoesDiaDaSemana = diasDaSemana.map((diaDaSemana, index) =>
+        <BotaoDiaDaSemana
+            key={index}
+            id={index}
+            sigla={diaDaSemana}
+            disabled={loading}
+        />
+    )
+
+    const botaoSalvar = loading ? <ThreeDots color="white" height={11} width={43} /> : "Salvar";
 
     return (
         <Container>
@@ -137,9 +137,6 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
-    margin-top: 20px;
-    margin-bottom: 30px;
 `;
 
 
