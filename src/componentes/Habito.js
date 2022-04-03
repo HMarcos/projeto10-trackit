@@ -1,7 +1,43 @@
+import axios from "axios";
+import { useContext } from "react";
 import styled from "styled-components";
 
+import UserContext from "../contextos/UserContext";
+
+import Lixeira from "./../assets/imagens/lixeira.png"
+
+const LINK_API_HABITOS = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
+
 function Habito(props) {
-    const { id, habito, dias } = props;
+    const { id, habito, dias, atualizarPagina } = props;
+
+    const { usuario } = useContext(UserContext);
+
+    function deletarHabito() {
+        const confirmacao = window.confirm("Deseja realmente deletar esse hábito?");
+
+        if (confirmacao) {
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${usuario.token}`
+                }
+            };
+
+            const promessa = axios.delete(`${LINK_API_HABITOS}/${id}`, config);
+
+            promessa.then((response) => {
+                console.log(response.data);
+                console.log("Hábito deletado com sucesso!");
+                atualizarPagina();
+            })
+
+            promessa.catch((err) => {
+                const { status, data } = err.response;
+                alert(`Não foi possível deletar o hábito.
+                Erro ${status}: ${data} `);
+            })
+        }
+    }
 
     const todosDiasDaSemana = ["D", "S", "T", "Q", "Q", "S", "S"];
 
@@ -20,6 +56,9 @@ function Habito(props) {
                 <DiasDaSemana>
                     {diasDaSemana}
                 </DiasDaSemana>
+                <BotaoDeletarHabito onClick={deletarHabito}>
+                    <img src={Lixeira} alt="apagar habito" />
+                </BotaoDeletarHabito>
             </Container>
         </ArticleHabito>
     )
@@ -61,6 +100,8 @@ const Container = styled.div`
     flex-direction: column;
     margin-left: 15px;
 
+    position: relative;
+
     h3 {
         max-width: 290px;
         
@@ -69,6 +110,20 @@ const Container = styled.div`
         line-height: 25px;
 
         color: var(--cor-habito);
+    }
+`;
+
+const BotaoDeletarHabito = styled.button`
+    position: absolute;
+
+    right: 10px;
+    top: 0px;
+
+    background-color: inherit;
+    
+    img {
+        width: 13px;
+        height: 15px;
     }
 `;
 

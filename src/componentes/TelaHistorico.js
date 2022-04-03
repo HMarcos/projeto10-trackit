@@ -1,11 +1,18 @@
+import { useContext, useEffect } from "react";
 import styled from "styled-components";
+
+import BackgroundContext from "../contextos/BackgroundContext";
 
 import Header from "./Header";
 import Menu from "./Menu";
 
-function TelaHistorico(props) {
-    
-    props.definirBackground();
+function TelaHistorico() {
+
+    const { setBackground } = useContext(BackgroundContext);
+
+    useEffect(() => {
+        setBackground("#E5E5E5");
+    }, [])
 
     return (
         <>

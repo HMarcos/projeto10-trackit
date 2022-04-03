@@ -11,9 +11,7 @@ import LogoTrackIt from "./../assets/imagens/TrackIt.png"
 
 const LINK_API_LOGIN = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login";
 
-function TelaLogin(props) {
-
-    props.definirBackground();
+function TelaLogin() {
 
     const [login, setLogin] = useState(
         {

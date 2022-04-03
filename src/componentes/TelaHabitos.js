@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import HabitContext from "../contextos/HabitContext";
 import UserContext from "../contextos/UserContext";
+import BackgroundContext from "../contextos/BackgroundContext";
 
 import Header from "./Header";
 import Menu from "./Menu";
@@ -13,17 +14,18 @@ import Habito from "./Habito";
 const LINK_API_HABITOS = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
 
 
-function TelaHabitos(props) {
-
-    props.definirBackground();
+function TelaHabitos() {
 
     const { novoHabito, setNovoHabito } = useContext(HabitContext);
     const { usuario } = useContext(UserContext);
+    const { setBackground } = useContext(BackgroundContext);
 
     const [habitos, setHabitos] = useState(null);
     const [refreshKey, setRefreshKey] = useState(0);
 
     useEffect(() => {
+        setBackground("#E5E5E5");
+        
         const config = {
             headers: {
                 Authorization: `Bearer ${usuario.token}`
@@ -48,7 +50,7 @@ function TelaHabitos(props) {
     },
         [refreshKey])
 
-    function atualizarPagina(){
+    function atualizarPagina() {
         setRefreshKey(refreshKey + 1);
     }
 
@@ -71,6 +73,7 @@ function TelaHabitos(props) {
                     id={habito.id}
                     habito={habito.name}
                     dias={habito.days}
+                    atualizarPagina={atualizarPagina}
                 />
             ));
         }

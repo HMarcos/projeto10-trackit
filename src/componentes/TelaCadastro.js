@@ -9,9 +9,7 @@ import LogoTrackIt from "./../assets/imagens/TrackIt.png"
 
 const LINK_API_CADASTRO = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up";
 
-function TelaCadastro(props) {
-
-    props.definirBackground();
+function TelaCadastro() {
 
     const [cadastro, setCadastro] = useState(
         {
