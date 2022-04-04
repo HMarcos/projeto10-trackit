@@ -10,11 +10,9 @@ import BotaoDiaDaSemana from "./BotaoDiaDaSemana";
 
 const LINK_API_HABITOS = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
 
-function NovoHabito({atualizarPagina}) {
+function NovoHabito({ atualizarPagina }) {
     const { novoHabito, setNovoHabito } = useContext(HabitContext);
     const { usuario } = useContext(UserContext);
-
-    console.log(novoHabito);
 
     const [loading, setLoading] = useState(false);
 
@@ -41,7 +39,6 @@ function NovoHabito({atualizarPagina}) {
             const promessa = axios.post(LINK_API_HABITOS, novoHabito.dados, config);
 
             promessa.then((response) => {
-                console.log(response.data);
 
                 setLoading(false);
                 setNovoHabito({
@@ -57,8 +54,6 @@ function NovoHabito({atualizarPagina}) {
 
             promessa.catch((err) => {
                 const { status, data } = err.response;
-
-                console.log(data);
 
                 alert(`Não foi possível realizar o cadastro do novo hábito.
             Erro ${status}: ${data.message} `);

@@ -51,9 +51,6 @@ function TelaHoje() {
 
 
     useEffect(() => {
-        console.log("Habitos");
-        console.log(habitos);
-        console.log("Calculando o progresso...")
         setProgresso(calcularProgresso());
     }, [habitos])
 
@@ -115,8 +112,6 @@ function TelaHoje() {
             atualizarPagina={atualizarPagina}
         />
     )
-
-    console.log(textoProgresso)     
 
     return (
         <>

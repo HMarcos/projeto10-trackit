@@ -41,9 +41,6 @@ function TelaHabitos() {
         promessa.then((response) => {
             const { data } = response;
             setHabitos(data);
-
-            console.log("Hábitos recuperados com suceeso");
-
         })
 
         promessa.catch((err) => {
@@ -56,9 +53,7 @@ function TelaHabitos() {
 
     async function atualizarPagina() {
         setRefreshKey(refreshKey + 1);
-        console.log("Progresso: ")
         const progresso = await atualizarProgresso(usuario.token);
-        console.log(progresso);
         setProgresso(progresso);
     }
 
@@ -86,9 +81,6 @@ function TelaHabitos() {
             ));
         }
     }
-
-
-    console.log(habitos);
 
     const conteudoHabitos = atribuitConteudoHabitos();
 

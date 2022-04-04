@@ -26,7 +26,6 @@ function HabitoDeHoje(props) {
             promessa = axios.post(`${LINK_API_HABITOS}/${id}/check`, {}, config);
 
             promessa.then((response) => {
-                console.log("Hábito Concluido");
                 atualizarPagina();
             });
 
@@ -40,7 +39,6 @@ function HabitoDeHoje(props) {
             promessa = axios.post(`${LINK_API_HABITOS}/${id}/uncheck`, {}, config);
 
             promessa.then((response) => {
-                console.log("Hábito Não Concluido");
                 atualizarPagina();
             });
 

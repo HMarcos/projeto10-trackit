@@ -26,8 +26,6 @@ function Habito(props) {
             const promessa = axios.delete(`${LINK_API_HABITOS}/${id}`, config);
 
             promessa.then((response) => {
-                console.log(response.data);
-                console.log("Hábito deletado com sucesso!");
                 atualizarPagina();
             })
 

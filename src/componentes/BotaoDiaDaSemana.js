@@ -8,9 +8,6 @@ function BotaoDiaDaSemana(props) {
 
     const { novoHabito, setNovoHabito } = useContext(HabitContext);
 
-    console.log("Botao Dia da Semana " + id + ": ")
-    console.log(novoHabito);
-
     const selecionado = novoHabito.dados.days.includes(id);
 
     function selecionarDia() {
