@@ -20,12 +20,11 @@ dayjs.locale('pt-br');
 function TelaHoje() {
     const { setBackground } = useContext(BackgroundContext);
     const { usuario } = useContext(UserContext);
-    const { infoProgresso, infoRefreshKeyTelaHoje } = useContext(TodayContext);
+    const { progresso, setProgresso } = useContext(TodayContext);
 
-    const [progresso, setProgresso] = infoProgresso;
-    const [refreshKeyTelaHoje] = infoRefreshKeyTelaHoje;
 
     const [habitos, setHabitos] = useState([]);
+    const [refreshKey, setRefreshKey] = useState(0);
 
     useEffect(() => {
         setBackground("#E5E5E5");
@@ -48,7 +47,7 @@ function TelaHoje() {
             Erro ${status}: ${data} `);
         })
 
-    }, [refreshKeyTelaHoje]);
+    }, [refreshKey]);
 
 
     useEffect(() => {
@@ -58,6 +57,9 @@ function TelaHoje() {
         setProgresso(calcularProgresso());
     }, [habitos])
 
+    function atualizarPagina() {
+        setRefreshKey(refreshKey + 1);
+    }
 
     function calcularProgresso() {
         const numeroTotalDeHabitos = habitos.length;
@@ -110,6 +112,7 @@ function TelaHoje() {
             feito={habito.done}
             sequenciaAtual={habito.currentSequence}
             maiorSequencia={habito.highestSequence}
+            atualizarPagina={atualizarPagina}
         />
     )
 

@@ -28,7 +28,6 @@ function App() {
     });
 
     const [progresso, setProgresso] = useState(0);
-    const [refreshKeyTelaHoje, setRefreshKeyTelaHoje] = useState(0);
 
     const [background, setBackground] = useState("#FFFFFF");
 
@@ -39,7 +38,7 @@ function App() {
             <BackgroundContext.Provider value={{ background, setBackground }}>
                 <UserContext.Provider value={{ usuario, setUsuario }}>
                     <TodayContext.Provider
-                        value={{ infoProgresso: [progresso, setProgresso], infoRefreshKeyTelaHoje: [refreshKeyTelaHoje, setRefreshKeyTelaHoje] }}>
+                        value={{ progresso, setProgresso }}>
                         <HabitContext.Provider value={{ novoHabito, setNovoHabito }}>
                             <BrowserRouter>
                                 <Routes>

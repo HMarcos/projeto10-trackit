@@ -9,8 +9,7 @@ import TodayContext from "../contextos/TodayContext";
 
 function Menu() {
 
-    const {infoProgresso} = useContext(TodayContext);
-    const [progresso] = infoProgresso;
+    const {progresso} = useContext(TodayContext);
 
     const circularProgressbar = <CircularProgressbar
         value={progresso}

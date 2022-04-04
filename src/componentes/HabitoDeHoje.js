@@ -3,19 +3,16 @@ import axios from "axios";
 import styled from "styled-components";
 
 import UserContext from "../contextos/UserContext";
-import TodayContext from "../contextos/TodayContext";
+
 
 import CheckImage from "./../assets/imagens/check.png"
 
 const LINK_API_HABITOS = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/";
 
 function HabitoDeHoje(props) {
-    const { id, habito, feito, sequenciaAtual, maiorSequencia } = props;
+    const { id, habito, feito, sequenciaAtual, maiorSequencia, atualizarPagina } = props;
 
     const { usuario } = useContext(UserContext);
-    const { infoRefreshKeyTelaHoje } = useContext(TodayContext);
-
-    const [refreshKeyTelaHoje, setRefreshKeyTelaHoje] = infoRefreshKeyTelaHoje;
 
     function concluirHabito() {
         const config = {
@@ -30,7 +27,7 @@ function HabitoDeHoje(props) {
 
             promessa.then((response) => {
                 console.log("Hábito Concluido");
-                setRefreshKeyTelaHoje(refreshKeyTelaHoje + 1);
+                atualizarPagina();
             });
 
             promessa.catch((err) => {
@@ -44,7 +41,7 @@ function HabitoDeHoje(props) {
 
             promessa.then((response) => {
                 console.log("Hábito Não Concluido");
-                setRefreshKeyTelaHoje(refreshKeyTelaHoje + 1);
+                atualizarPagina();
             });
 
             promessa.catch((err) => {
@@ -53,8 +50,6 @@ function HabitoDeHoje(props) {
                 Erro ${status}: ${data.message} `);
             });
         }
-
-
     }
 
     const cores = {
