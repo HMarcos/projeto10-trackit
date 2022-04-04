@@ -5,10 +5,7 @@ import UserContext from "../contextos/UserContext";
 
 function Header() {
     const { usuario } = useContext(UserContext);
-    
-    console.log("Header:");
-    console.log(usuario);
-    
+
     const imagem = usuario.image;
     const nome = usuario.name;
     return (

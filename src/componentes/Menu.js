@@ -1,14 +1,19 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
+import TodayContext from "../contextos/TodayContext";
 
 function Menu() {
 
+    const {infoProgresso} = useContext(TodayContext);
+    const [progresso] = infoProgresso;
+
     const circularProgressbar = <CircularProgressbar
-        value={50}
+        value={progresso}
         text={"Hoje"}
         background={true}
         backgroundPadding={6}
