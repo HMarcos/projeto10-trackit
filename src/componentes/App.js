@@ -7,6 +7,7 @@ import GlobalStyle from "../assets/css/globalStyles";
 import UserContext from "../contextos/UserContext";
 import HabitContext from "../contextos/HabitContext";
 import BackgroundContext from "../contextos/BackgroundContext";
+import TodayContext from "../contextos/TodayContext";
 
 import TelaLogin from "./TelaLogin";
 import TelaCadastro from "./TelaCadastro";
@@ -26,25 +27,31 @@ function App() {
         }
     });
 
+    const [progresso, setProgresso] = useState(0);
+    const [refreshKeyTelaHoje, setRefreshKeyTelaHoje] = useState(0);
+
     const [background, setBackground] = useState("#FFFFFF");
 
     return (
         <>
             <Reset />
+            <GlobalStyle background={background} />
             <BackgroundContext.Provider value={{ background, setBackground }}>
-                <GlobalStyle background={background} />
                 <UserContext.Provider value={{ usuario, setUsuario }}>
-                    <HabitContext.Provider value={{ novoHabito, setNovoHabito }}>
-                        <BrowserRouter>
-                            <Routes>
-                                <Route path="/" element={<TelaLogin />}></Route>
-                                <Route path="/cadastro" element={<TelaCadastro />}></Route>
-                                <Route path="/hoje" element={<TelaHoje />}></Route>
-                                <Route path="/habitos" element={<TelaHabitos />}></Route>
-                                <Route path="/historico" element={<TelaHistorico />}></Route>
-                            </Routes>
-                        </BrowserRouter>
-                    </HabitContext.Provider>
+                    <TodayContext.Provider
+                        value={{ infoProgresso: [progresso, setProgresso], infoRefreshKeyTelaHoje: [refreshKeyTelaHoje, setRefreshKeyTelaHoje] }}>
+                        <HabitContext.Provider value={{ novoHabito, setNovoHabito }}>
+                            <BrowserRouter>
+                                <Routes>
+                                    <Route path="/" element={<TelaLogin />}></Route>
+                                    <Route path="/cadastro" element={<TelaCadastro />}></Route>
+                                    <Route path="/hoje" element={<TelaHoje />}></Route>
+                                    <Route path="/habitos" element={<TelaHabitos />}></Route>
+                                    <Route path="/historico" element={<TelaHistorico />}></Route>
+                                </Routes>
+                            </BrowserRouter>
+                        </HabitContext.Provider>
+                    </TodayContext.Provider>
                 </UserContext.Provider>
             </BackgroundContext.Provider>
         </>
