@@ -10,6 +10,7 @@ import TodayContext from "../contextos/TodayContext";
 
 import Header from "./Header";
 import Menu from "./Menu";
+import HabitoDeHoje from "./HabitoDeHoje";
 
 
 const LINK_API_HABITOS_HOJE = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today";
@@ -19,9 +20,10 @@ dayjs.locale('pt-br');
 function TelaHoje() {
     const { setBackground } = useContext(BackgroundContext);
     const { usuario } = useContext(UserContext);
-    const { infoProgresso } = useContext(TodayContext);
+    const { infoProgresso, infoRefreshKeyTelaHoje } = useContext(TodayContext);
 
     const [progresso, setProgresso] = infoProgresso;
+    const [refreshKeyTelaHoje] = infoRefreshKeyTelaHoje;
 
     const [habitos, setHabitos] = useState([]);
 
@@ -46,7 +48,7 @@ function TelaHoje() {
             Erro ${status}: ${data} `);
         })
 
-    }, []);
+    }, [refreshKeyTelaHoje]);
 
 
     useEffect(() => {
@@ -100,6 +102,17 @@ function TelaHoje() {
         "#8FC549"
     }
 
+    const habitosDehoje = habitos.map((habito) => 
+        <HabitoDeHoje 
+            key={habito.id}
+            id={habito.id}
+            habito={habito.name}
+            feito={habito.done}
+            sequenciaAtual={habito.currentSequence}
+            maiorSequencia={habito.highestSequence}
+        />
+    )
+
     console.log(textoProgresso)     
 
     return (
@@ -111,6 +124,7 @@ function TelaHoje() {
                         <Data>{dataTexto}</Data>
                         <Progresso cor={textoProgresso.cor}>{textoProgresso.conteudo}</Progresso>
                     </Info>
+                    {habitosDehoje}
                 </Container>
             </Conteudo>
             <Menu />
