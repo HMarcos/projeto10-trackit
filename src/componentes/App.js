@@ -7,7 +7,7 @@ import GlobalStyle from "../assets/css/globalStyles";
 import UserContext from "../contextos/UserContext";
 import HabitContext from "../contextos/HabitContext";
 import BackgroundContext from "../contextos/BackgroundContext";
-import TodayContext from "../contextos/TodayContext";
+import ProgressContext from "../contextos/ProgressContext";
 
 import TelaLogin from "./TelaLogin";
 import TelaCadastro from "./TelaCadastro";
@@ -37,7 +37,7 @@ function App() {
             <GlobalStyle background={background} />
             <BackgroundContext.Provider value={{ background, setBackground }}>
                 <UserContext.Provider value={{ usuario, setUsuario }}>
-                    <TodayContext.Provider
+                    <ProgressContext.Provider
                         value={{ progresso, setProgresso }}>
                         <HabitContext.Provider value={{ novoHabito, setNovoHabito }}>
                             <BrowserRouter>
@@ -50,7 +50,7 @@ function App() {
                                 </Routes>
                             </BrowserRouter>
                         </HabitContext.Provider>
-                    </TodayContext.Provider>
+                    </ProgressContext.Provider>
                 </UserContext.Provider>
             </BackgroundContext.Provider>
         </>

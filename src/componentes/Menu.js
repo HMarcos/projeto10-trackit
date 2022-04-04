@@ -5,11 +5,11 @@ import styled from "styled-components";
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-import TodayContext from "../contextos/TodayContext";
+import ProgressContext from "../contextos/ProgressContext";
 
 function Menu() {
 
-    const {progresso} = useContext(TodayContext);
+    const {progresso} = useContext(ProgressContext);
 
     const circularProgressbar = <CircularProgressbar
         value={progresso}

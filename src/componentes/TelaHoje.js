@@ -6,7 +6,7 @@ import 'dayjs/locale/pt-br';
 
 import UserContext from "../contextos/UserContext";
 import BackgroundContext from "../contextos/BackgroundContext";
-import TodayContext from "../contextos/TodayContext";
+import ProgressContext from "../contextos/ProgressContext";
 
 import Header from "./Header";
 import Menu from "./Menu";
@@ -20,7 +20,7 @@ dayjs.locale('pt-br');
 function TelaHoje() {
     const { setBackground } = useContext(BackgroundContext);
     const { usuario } = useContext(UserContext);
-    const { progresso, setProgresso } = useContext(TodayContext);
+    const { progresso, setProgresso } = useContext(ProgressContext);
 
 
     const [habitos, setHabitos] = useState([]);
@@ -71,7 +71,7 @@ function TelaHoje() {
             }
         })
 
-        let progressoAtual = 0;
+        let progressoAtual = progresso;
 
         if (numeroTotalDeHabitos !== 0) {
             progressoAtual = Math.round((numeroDeHabitosCompletos / numeroTotalDeHabitos) * 100);

@@ -5,11 +5,14 @@ import styled from "styled-components";
 import HabitContext from "../contextos/HabitContext";
 import UserContext from "../contextos/UserContext";
 import BackgroundContext from "../contextos/BackgroundContext";
+import ProgressContext from "../contextos/ProgressContext";
 
 import Header from "./Header";
 import Menu from "./Menu";
 import NovoHabito from "./NovoHabito";
 import Habito from "./Habito";
+
+import atualizarProgresso from "../assets/js/atualizarProgresso";
 
 const LINK_API_HABITOS = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
 
@@ -18,6 +21,7 @@ function TelaHabitos() {
 
     const { novoHabito, setNovoHabito } = useContext(HabitContext);
     const { usuario } = useContext(UserContext);
+    const {setProgresso} = useContext(ProgressContext);
     const { setBackground } = useContext(BackgroundContext);
 
     const [habitos, setHabitos] = useState(null);
@@ -50,8 +54,12 @@ function TelaHabitos() {
     },
         [refreshKey])
 
-    function atualizarPagina() {
+    async function atualizarPagina() {
         setRefreshKey(refreshKey + 1);
+        console.log("Progresso: ")
+        const progresso = await atualizarProgresso(usuario.token);
+        console.log(progresso);
+        setProgresso(progresso);
     }
 
     function exibirNovoHabito() {
